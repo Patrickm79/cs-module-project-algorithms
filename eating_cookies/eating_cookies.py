@@ -12,6 +12,8 @@ def eating_cookies(n):  # O(3^n) time, O(3^n) space
     else:
         return eating_cookies(n-1) + eating_cookies(n-2) + eating_cookies(n-3)
 
+
+### Optimized solution ###
 # def eating_cookies(n, cache=None):
 #     if n < 0: # check for negative values
 #         return 0 # getting to a negative number means we didn't find one of the ways
