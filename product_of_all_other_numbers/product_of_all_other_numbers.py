@@ -3,9 +3,29 @@ Input: a List of integers
 Returns: a List of integers
 '''
 def product_of_all_other_numbers(arr):
-    # Your code here
+    product = 1
+    zeroes = 0
 
-    pass
+    for num in arr:
+        if num == 0:
+            zeroes += 1
+            if zeroes > 1: # if there are more than one zero
+                return [0] * len(arr) # all of the products are going to be 0
+        else:
+            product *= num
+
+    result = []
+
+    # If there is one zero what we append depends on whether the current number is 0
+    if zeroes == 1:
+        for num in arr:
+            result.append(0) if num != 0 else result.append(product)
+    # Otherwise, we just append the total product divided by the current number
+    else:
+        for num in arr:
+            result.append(product // num)
+
+    return result
 
 
 if __name__ == '__main__':
