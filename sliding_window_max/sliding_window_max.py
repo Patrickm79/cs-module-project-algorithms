@@ -3,42 +3,30 @@ Input: a List of integers as well as an integer `k` representing the size of the
 Returns: a List of integers
 '''
 def sliding_window_max(nums, k):
-     # k is window
-     # make a new array to hold temp numbers in window (if k=3, hold array index0, index1, index2)
-     # make another array to hold expected output
-     # loop (first pass is 1, so ind0, ind1, ind2. 2nd pass is 2, so ind1, ind2, ind3)
-         # loop over numbers in window
-         # append numbers to window_array
-     # sort window array
-     # get the last element of the window array (max)
-     # append max to expected_output array
-     # delete first number of the nums array, so you start on the next window
-     # clear the window_array to start fresh on the next loop
-     # return expected output array
 
-    window_array = []
-    expected_output = []
+    window_array = [] # create window array
+    expected_output = [] # expected output
 
-    while 0 < len(nums) - (k-1):
-        for number in nums[0:k]:
-            window_array.append(number)
-        window_array.sort()
-        max_number = window_array[k-1]
-        expected_output.append(max_number)
-        nums.pop(0)
-        window_array = []
+    while 0 < len(nums) - (k-1): # loop (first pass is 1, so ind0, ind1, ind2. 2nd pass is 2, so ind1, ind2, ind3)
 
-    return expected_output
+        for number in nums[0:k]: # loop over numbers in window
+            window_array.append(number) #append numbers to window_array
+        window_array.sort() # sort window array
+        max_number = window_array[k-1] # get the last element of the window array
+        expected_output.append(max_number) # append max to expected_output
+        nums.pop(0) # delete first number of nums array, so next window starts
+        window_array = [] # clear the window_array to start fresh on next loop
 
+    return expected_output # return expected output
 
-### DAY 4: FUNCTION OPTIMIZED ###
+### Optimized Solution ###
 # def sliding_window_max(nums, k):
-#     expected_output = []
-#     while 0 < len(nums) - (k-1):
-#         window_array = nums[0:k]
-#         expected_output.append(max(window_array))
-#         nums.pop(0)
-#     return expected_output
+#     expected_output = [] # create expected output
+#     while 0 < len(nums) - (k-1): # check that we are within the window space allowed and loop while true
+#         window_array = nums[0:k] # create the window
+#         expected_output.append(max(window_array)) # append the max of the window array to expected output
+#         nums.pop(0) # delete first number of nums array, so next window starts
+#     return expected_output # return expected output
 
 
 if __name__ == '__main__':
